@@ -1,5 +1,9 @@
 from switchbotmeter import DevScanner
 import requests
+import configparser
+
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 current_devices = next(DevScanner())
 for device in current_devices:
@@ -11,7 +15,7 @@ for device in current_devices:
         'temp': device.temp,
         'humidity': device.humidity,
     }
-    requests.post('http://192.168.178.89:8091/switchbot', json=data)
+    requests.post(config["API"]["DATA_ENDPOINT"], json=data)
     print("===========")
     print(f'mac: {device.mac}')
     print(f'model: {device.model}')
