@@ -66,9 +66,6 @@ class Device:
         }
         for (_, key, value) in self.device.getScanData():
             actions.get(key, lambda x: {})(value)
-        print("######")
-        print(self.data)
-        print("######")
 
     def __getattr__(self, attr):
         """Enable direct access to data attributes"""
