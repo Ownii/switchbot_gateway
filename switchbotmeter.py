@@ -67,6 +67,8 @@ class Device:
         for (_, key, value) in self.device.getScanData():
             # Load data
             print("Load data")
+            print(key)
+            print(value)
             actions.get(key, lambda x: {})(value)
 
     def __getattr__(self, attr):
