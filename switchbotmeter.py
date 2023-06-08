@@ -63,12 +63,14 @@ class Device:
             'Local name': self.set_mac,
             'Complete 128b Services': self.set_mac
         }
+        print("==========")
         for (_, key, value) in self.device.getScanData():
             # Load data
             print("------")
             print(f'{key}: {value}')
             print("------")
             actions.get(key, lambda x: {})(value)
+        print("==========")
 
     def __getattr__(self, attr):
         """Enable direct access to data attributes"""
