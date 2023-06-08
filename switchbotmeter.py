@@ -1,7 +1,6 @@
 from bluepy.btle import Scanner, DefaultDelegate
 import binascii
 import datetime
-from pprint import pprint
 
 
 SERVICE_UUID = 'cba20d00-224d-11e6-9fb8-0002a5d5c51b'
@@ -65,18 +64,8 @@ class Device:
             'Local name': self.set_mac,
             'Complete 128b Services': self.set_mac
         }
-        # print("==========")
-        # pprint(vars(device))
-        # print(device.addr)
         for (_, key, value) in self.device.getScanData():
-            # Load data
-            # print("------")
-            # print(f'{key}: {value}')
-            # print("------")
             actions.get(key, lambda x: {})(value)
-        # print("==========")
-        # print()
-        # print()
 
     def __getattr__(self, attr):
         """Enable direct access to data attributes"""
@@ -109,4 +98,3 @@ class Device:
                          date=datetime.datetime.now(),
                          temp=int(hexv[6:7].hex(), 16) - 128 + (hexv[5] / 10),
                          humidity=hexv[7])
-        #print(self.data)
