@@ -72,6 +72,8 @@ class Device:
             print("------")
             actions.get(key, lambda x: {})(value)
         print("==========")
+        print()
+        print()
 
     def __getattr__(self, attr):
         """Enable direct access to data attributes"""
