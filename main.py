@@ -7,7 +7,7 @@ for current_devices in DevScanner():
             'mac': device.mac,
             'model': device.model,
             'mode': device.mode,
-            'date': device.date,
+            'date': str(device.date),
             'temp': device.temp,
             'humidity': device.humidity,
         }
