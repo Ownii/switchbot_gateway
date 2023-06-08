@@ -3,7 +3,15 @@ import requests
 
 for current_devices in DevScanner():
     for device in current_devices:
-        requests.post('http://192.168.178.89:8091/switchbot', device)
+        data = {
+            'mac': device.mac,
+            'model': device.model,
+            'mode': device.mode,
+            'date': device.date,
+            'temp': device.temp,
+            'humidity': device.humidity,
+        }
+        requests.post('http://192.168.178.89:8091/switchbot', data)
         print("===========")
         print(f'mac: {device.mac}')
         print(f'model: {device.model}')
