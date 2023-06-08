@@ -65,6 +65,7 @@ class Device:
             'Complete 128b Services': self.set_mac
         }
         for (_, key, value) in self.device.getScanData():
+            print(f'{key}: {value}')
             actions.get(key, lambda x: {})(value)
 
     def __getattr__(self, attr):
