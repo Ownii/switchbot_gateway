@@ -90,6 +90,7 @@ class Device:
 
     def set_mac(self, value):
         """Set device mac."""
+        print(value)
         if value in ('WoHand', 'WoMeter', SERVICE_UUID):
             self.mac = self.device.addr
 
