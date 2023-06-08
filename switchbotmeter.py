@@ -58,25 +58,25 @@ class Device:
     """
     def __init__(self, device):
         self.device = device
-        self.mac = None
+        self.mac = device.addr
         self.data = {}
         actions = {
             '16b Service Data': self.set_service_data,
             'Local name': self.set_mac,
             'Complete 128b Services': self.set_mac
         }
-        print("==========")
-        pprint(vars(device))
-        print(device.addr)
+        # print("==========")
+        # pprint(vars(device))
+        # print(device.addr)
         for (_, key, value) in self.device.getScanData():
             # Load data
-            print("------")
-            print(f'{key}: {value}')
-            print("------")
+            # print("------")
+            # print(f'{key}: {value}')
+            # print("------")
             actions.get(key, lambda x: {})(value)
-        print("==========")
-        print()
-        print()
+        # print("==========")
+        # print()
+        # print()
 
     def __getattr__(self, attr):
         """Enable direct access to data attributes"""
