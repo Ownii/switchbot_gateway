@@ -99,4 +99,4 @@ class Device:
                          date=datetime.datetime.now(),
                          temp=int(hexv[6:7].hex(), 16) - 128 + (hexv[5] / 10),
                          humidity=hexv[7])
-        print(self.data)
+        #print(self.data)
