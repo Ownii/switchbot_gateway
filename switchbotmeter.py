@@ -84,9 +84,6 @@ class Device:
             return self.data[attr]
 
     def __bool__(self):
-        """Return false if the device is not a switchbot meter"""
-        print(self.mac)
-        print(self.data)
         return bool(self.mac and self.data)
 
     def __repr__(self):
@@ -99,7 +96,6 @@ class Device:
 
     def set_mac(self, value):
         """Set device mac."""
-        print(value)
         if value in ('WoHand', 'WoMeter', SERVICE_UUID):
             self.mac = self.device.addr
 
