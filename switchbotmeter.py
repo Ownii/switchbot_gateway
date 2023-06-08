@@ -1,6 +1,8 @@
 from bluepy.btle import Scanner, DefaultDelegate
 import binascii
 import datetime
+from pprint import pprint
+
 
 SERVICE_UUID = 'cba20d00-224d-11e6-9fb8-0002a5d5c51b'
 
@@ -64,6 +66,7 @@ class Device:
             'Complete 128b Services': self.set_mac
         }
         print("==========")
+        pprint(vars(device))
         print(device.addr)
         for (_, key, value) in self.device.getScanData():
             # Load data
