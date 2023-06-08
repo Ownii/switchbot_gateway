@@ -30,7 +30,6 @@ class DevScanner(DefaultDelegate):
            an iterator with the whole currently-available list of devices.
         """
         res = self.scanner.scan(self.wait_time)
-        print("next")
         return filter(None, (Device(d) for d in res))
 
 
@@ -66,9 +65,9 @@ class Device:
         }
         for (_, key, value) in self.device.getScanData():
             # Load data
-            print("Load data")
-            print(key)
-            print(value)
+            print("------")
+            print(f'{key}: {value}')
+            print("------")
             actions.get(key, lambda x: {})(value)
 
     def __getattr__(self, attr):

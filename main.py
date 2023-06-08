@@ -1,7 +1,6 @@
 from switchbotmeter import DevScanner
 
 for current_devices in DevScanner():
-    print("test")
     for device in current_devices:
         #print(device)
         #print("found device")
