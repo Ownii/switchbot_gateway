@@ -11,7 +11,7 @@ for current_devices in DevScanner():
             'temp': device.temp,
             'humidity': device.humidity,
         }
-        requests.post('http://192.168.178.89:8091/switchbot', data)
+        requests.post('http://192.168.178.89:8091/switchbot', json=data)
         print("===========")
         print(f'mac: {device.mac}')
         print(f'model: {device.model}')
