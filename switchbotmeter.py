@@ -64,7 +64,7 @@ class Device:
             'Complete 128b Services': self.set_mac
         }
         print("==========")
-        print(device)
+        print(device.addr)
         for (_, key, value) in self.device.getScanData():
             # Load data
             print("------")
