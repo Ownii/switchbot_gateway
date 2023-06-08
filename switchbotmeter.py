@@ -30,6 +30,7 @@ class DevScanner(DefaultDelegate):
            an iterator with the whole currently-available list of devices.
         """
         res = self.scanner.scan(self.wait_time)
+        print("next")
         return filter(None, (Device(d) for d in res))
 
 
@@ -65,6 +66,7 @@ class Device:
         }
         for (_, key, value) in self.device.getScanData():
             # Load data
+            print("Load data")
             actions.get(key, lambda x: {})(value)
 
     def __getattr__(self, attr):
@@ -74,6 +76,8 @@ class Device:
 
     def __bool__(self):
         """Return false if the device is not a switchbot meter"""
+        print(self.mac)
+        print(self.data)
         return bool(self.mac and self.data)
 
     def __repr__(self):
