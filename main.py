@@ -11,7 +11,7 @@ for device in current_devices:
         'mac': device.mac,
         'model': device.model,
         'mode': device.mode,
-        'date': str(device.date),
+        'date': device.date.isoFormat(),
         'temp': device.temp,
         'humidity': device.humidity,
     }
