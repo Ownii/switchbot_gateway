@@ -1,9 +1,14 @@
 from switchbotmeter import DevScanner
 import requests
 import configparser
+import paho.mqtt.client as mqtt
 
 config = configparser.ConfigParser()
 config.read("config.ini")
+client = mqtt.Client()
+
+if config["MQTT"] is not None:
+    client.connect(config["MQTT"]["SERVER"], config["MQTT"]["PORT"], 60)
 
 current_devices = next(DevScanner())
 for device in current_devices:
@@ -16,6 +21,8 @@ for device in current_devices:
         'humidity': device.humidity,
     }
     requests.post(config["API"]["DATA_ENDPOINT"], json=data)
+    if client is not None:
+        client.publish("switchbot", data)
     print("===========")
     print(f'mac: {device.mac}')
     print(f'model: {device.model}')
