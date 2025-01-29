@@ -15,7 +15,8 @@ for device in current_devices:
         'temp': device.temp,
         'humidity': device.humidity,
     }
-    requests.post(config["API"]["DATA_ENDPOINT"], json=data)
+    headers = { "X-API-KEY": config["API"]["API_KEY"] }
+    requests.post(config["API"]["DATA_ENDPOINT"], json=data, headers=headers)
     print("===========")
     print(f'mac: {device.mac}')
     print(f'model: {device.model}')
